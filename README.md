@@ -1,23 +1,29 @@
-# Dispatch System
+# WIP Dispatch System (Wait till 1.0 to download)
 
-Dispatch system that works with our mdt.
+# Preview - On Screen 
+![image](https://i.imgur.com/3rZl5yZ.png)
+# Preview - MDT Dispatch
+![image](https://cdn.discordapp.com/attachments/940252790918352896/940377297347838023/unknown.png)
 
-Available alerts:
+# Available Alerts
 
-[+] un-dispatch:bankrobbery - Bank Robbery
+[+] Bank Robbery
 
-[+] un-dispatch:storerobbery - Store Robbery
+[+] Store Robbery
 
-[+] un-dispatch:houserobbery - House Robbery
+[+] House Robbery
 
-[+] un-dispatch:jewelrobbery - Vangelico Robbery
+[+] Vangelico Robbery
 
-[+] un-dispatch:jailbreak - Jail Break
+[+] Jail Break
 
-[+] un-dispatch:carjacking - Vehicle Theft
+[+] Vehicle Theft
 
-[+] un-dispatch:gunshot - Shots Fired
+[+] Shots Fired
 
+[+] Disturance
+
+[+] Officer Down & EMS Down
 
 # Credit
 By FlawwsX - https://github.com/FlawwsX/erp_dispatch
