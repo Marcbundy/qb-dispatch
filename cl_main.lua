@@ -30,11 +30,12 @@ Citizen.CreateThread(function()
         if IsPedTryingToEnterALockedVehicle(playerPed) or IsPedJacking(playerPed) and Config["AutoAlerts"]["CarJacking"] then
             Citizen.Wait(3000)
 			local vehicle = QBCore.Functions.GetClosestVehicle(GetEntityCoords(PlayerPedId()))
+            local vehicleColor1, vehicleColor2 = GetVehicleColours(vehicle)
+            local firstcolor = Config.Colours[tostring(vehicleColor1)]
             TriggerEvent("qb-dispatch:carjacking", {
                 model = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))),
                 plate = GetVehicleNumberPlateText(vehicle),
-                firstColor = GetVehicleCustomPrimaryColour(vehicle),
-                secondColor = GetVehicleCustomSecondaryColour(vehicle),
+                firstColor = firstcolor,
                 heading = GetEntityHeading(vehicle)
             })
         elseif IsPedShooting(playerPed) and (cooldown == 0 or cooldown - GetGameTimer() < 0) and not isBusy and Config["AutoAlerts"]["GunshotAlert"] then
@@ -370,7 +371,6 @@ RegisterNetEvent("qb-dispatch:carjacking", function(data)
         model = data.model,
         plate = data.plate,
         firstColor = data.firstColor,
-        secondColor = data.secondColor,
         heading = data.heading,
         priority = 3,
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
