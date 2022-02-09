@@ -101,7 +101,16 @@ LoadQBCoreVersion = function()
             end
         end
     end)
+        RegisterServerEvent("qb-dispatch:civdown", function(coords)
+        for idx, id in pairs(QBCore.Functions.GetPlayers()) do
+            local xPlayer = QBCore.Functions.GetPlayer(id)
+            if isAuth(xPlayer.PlayerData.job.name) then
+                TriggerClientEvent("qb-dispatch:createBlip", xPlayer.PlayerData.source, "civdown", coords)
+            end
+        end
+    end)
 end
+
 
 
 
