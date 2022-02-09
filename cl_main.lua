@@ -22,7 +22,7 @@ Citizen.CreateThread(function()
         if IsPedTryingToEnterALockedVehicle(playerPed) or IsPedJacking(playerPed) and Config["AutoAlerts"]["CarJacking"] then
             Citizen.Wait(3000)
 			local vehicle = QBCore.Functions.GetClosestVehicle(GetEntityCoords(PlayerPedId()))
-            TriggerEvent("un-dispatch:carjacking", {
+            TriggerEvent("qb-dispatch:carjacking", {
                 model = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))),
                 plate = GetVehicleNumberPlateText(vehicle),
                 firstColor = GetVehicleCustomPrimaryColour(vehicle),
@@ -33,17 +33,17 @@ Citizen.CreateThread(function()
             isBusy = true
             if IsPedCurrentWeaponSilenced(playerPed) then
                 cooldown = GetGameTimer() + math.random(25000, 30000)
-                TriggerEvent("un-dispatch:gunshot")
+                TriggerEvent("qb-dispatch:gunshot")
             else
                 cooldown = GetGameTimer() + math.random(15000, 20000)
-                TriggerEvent("un-dispatch:gunshot")
+                TriggerEvent("qb-dispatch:gunshot")
             end
             isBusy = false
         end
     end
 end)
 
-RegisterNetEvent("un-dispatch:createBlip", function(type, coords)
+RegisterNetEvent("qb-dispatch:createBlip", function(type, coords)
     if type == "bankrobbery" then
         local alpha = 250
         local Blip = AddBlipForCoord(coords)
@@ -187,7 +187,7 @@ RegisterNetEvent("dispatch:clNotify", function(data, id)
     })
 end)
 
-RegisterNetEvent("un-dispatch:bankrobbery", function()
+RegisterNetEvent("qb-dispatch:bankrobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
     local gender = IsPedMale(playerPed)
@@ -199,10 +199,10 @@ RegisterNetEvent("un-dispatch:bankrobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Bank Robbery"
     })
-    TriggerServerEvent("un-dispatch:bankrobbery", currentPos)
+    TriggerServerEvent("qb-dispatch:bankrobbery", currentPos)
 end)
 
-RegisterNetEvent("un-dispatch:storerobbery", function()
+RegisterNetEvent("qb-dispatch:storerobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
     local gender = IsPedMale(playerPed)
@@ -214,10 +214,10 @@ RegisterNetEvent("un-dispatch:storerobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Store Robbery"
     })
-    TriggerServerEvent("un-dispatch:storerobbery", currentPos)
+    TriggerServerEvent("qb-dispatch:storerobbery", currentPos)
 end)
 
-RegisterNetEvent("un-dispatch:houserobbery", function()
+RegisterNetEvent("qb-dispatch:houserobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
     local gender = IsPedMale(playerPed)
@@ -229,10 +229,10 @@ RegisterNetEvent("un-dispatch:houserobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "House Robbery"
     })
-    TriggerServerEvent("un-dispatch:houserobbery", currentPos)
+    TriggerServerEvent("qb-dispatch:houserobbery", currentPos)
 end)
 
-RegisterNetEvent("un-dispatch:jewelrobbery", function()
+RegisterNetEvent("qb-dispatch:jewelrobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
     local gender = IsPedMale(playerPed)
@@ -244,10 +244,10 @@ RegisterNetEvent("un-dispatch:jewelrobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Vangelico Robbery"
     })
-    TriggerServerEvent("un-dispatch:jewelrobbery", currentPos)
+    TriggerServerEvent("qb-dispatch:jewelrobbery", currentPos)
 end)
 
-RegisterNetEvent("un-dispatch:jailbreak", function()
+RegisterNetEvent("qb-dispatch:jailbreak", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
     local gender = IsPedMale(playerPed)
@@ -259,10 +259,10 @@ RegisterNetEvent("un-dispatch:jailbreak", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Jail Break"
     })
-    TriggerServerEvent("un-dispatch:jailbreak", currentPos)
+    TriggerServerEvent("qb-dispatch:jailbreak", currentPos)
 end)
 
-RegisterNetEvent("un-dispatch:carjacking", function(data)
+RegisterNetEvent("qb-dispatch:carjacking", function(data)
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
     local gender = IsPedMale(playerPed)
@@ -279,10 +279,10 @@ RegisterNetEvent("un-dispatch:carjacking", function(data)
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Vehicle Theft"
     })
-    TriggerServerEvent("un-dispatch:carjacking", currentPos)
+    TriggerServerEvent("qb-dispatch:carjacking", currentPos)
 end)
 
-RegisterNetEvent("un-dispatch:gunshot", function()
+RegisterNetEvent("qb-dispatch:gunshot", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
     local gender = IsPedMale(playerPed)
@@ -294,5 +294,5 @@ RegisterNetEvent("un-dispatch:gunshot", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Shots Fired"
     })
-    TriggerServerEvent("un-dispatch:gunshot", currentPos)
+    TriggerServerEvent("qb-dispatch:gunshot", currentPos)
 end)
