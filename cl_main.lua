@@ -237,7 +237,23 @@ RegisterNetEvent("qb-dispatch:createBlip", function(type, coords)
                 return
             end
         end
-    
+ 	    elseif type == "civdown" then
+        local alpha = 250
+        local Blip = AddBlipForRadius(coords, 75.0)
+        SetBlipColour(Blip, 1)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('Injured Person')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
+        end
     end
 end)
 
@@ -406,4 +422,18 @@ RegisterNetEvent("qb-dispatch:atmrobbery", function()
         dispatchMessage = "ATM Robbery"
     })
     TriggerServerEvent("qb-dispatch:atmrobbery", currentPos)
+end)
+RegisterNetEvent("qb-dispatch:civdown", function()
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = IsPedMale(playerPed)
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "10-60",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 2,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "Injured Person"
+    })
+    TriggerServerEvent("qb-dispatch:civdown", currentPos)
 end)
