@@ -182,7 +182,7 @@ RegisterNetEvent("qb-dispatch:createBlip", function(type, coords)
         SetBlipColour(Blip, 1)
         SetBlipAsShortRange(Blip, true)
         BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString('10-13A Officer Down')
+        AddTextComponentString('10-99 Officer in Distress')
         EndTextCommandSetBlipName(Blip)
         while alpha ~= 0 do
             Citizen.Wait(120 * 4)
@@ -215,7 +215,7 @@ RegisterNetEvent("qb-dispatch:officerdown", function()
         gender = gender,
         priority = 1,
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = "OFFICER DOWN!"
+        dispatchMessage = "10-99 Officer in Distress"
     })
     TriggerServerEvent("qb-dispatch:officerdown", currentPos)
 end)
