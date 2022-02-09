@@ -1,5 +1,13 @@
 local QBCore = exports["qb-core"]:GetCoreObject()
 
+AddEventHandler('onResourceStart', function(resource)
+    if resource == GetCurrentResourceName() then
+        Wait(200)
+        PlayerJob = QBCore.Functions.GetPlayerData().job
+        isLoggedIn = true
+    end
+end)
+
 function GetStreetAndZone()
     local playerPed = PlayerPedId()
     local coords = GetEntityCoords(playerPed)
