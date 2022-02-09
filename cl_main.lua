@@ -174,6 +174,24 @@ RegisterNetEvent("qb-dispatch:createBlip", function(type, coords)
                 RemoveBlip(Blip)
                 return
             end
+        end	
+    elseif type == "officerdown" then
+        local alpha = 250
+        local Blip = AddBlipForCoord(coords)
+        SetBlipSprite(Blip, 162)
+        SetBlipColour(Blip, 1)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('10-13A Officer Down')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
         end
     end
 end)
@@ -185,6 +203,21 @@ RegisterNetEvent("dispatch:clNotify", function(data, id)
         data = data,
         timer = 5000
     })
+end)
+
+RegisterNetEvent("qb-dispatch:officerdown", function()
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = IsPedMale(playerPed)
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "10-13A",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 1,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "OFFICER DOWN!"
+    })
+    TriggerServerEvent("qb-dispatch:officerdown", currentPos)
 end)
 
 RegisterNetEvent("qb-dispatch:bankrobbery", function()
