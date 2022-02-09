@@ -29,7 +29,11 @@
 
 [+] Disturance
 
-[+] Officer Down & EMS Down
+[+] Officer Distress
+
+![image](https://user-images.githubusercontent.com/82112471/153124288-4235c82e-981e-4212-a28a-48468da54aaf.png)
+
+[+] EMS Distress
 
 # Credit
 By FlawwsX - https://github.com/FlawwsX/erp_dispatch
