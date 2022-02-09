@@ -201,6 +201,43 @@ RegisterNetEvent("qb-dispatch:createBlip", function(type, coords)
                 return
             end
         end
+    elseif type == "drugsell" then
+        local alpha = 250
+        local Blip = AddBlipForCoord(coords)
+        SetBlipSprite(Blip, 162)
+        SetBlipColour(Blip, 1)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('10-51 Drug Sale')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
+        end
+    elseif type == "atmrobbery" then
+        local alpha = 250
+        local Blip = AddBlipForCoord(coords)
+        SetBlipSprite(Blip, 162)
+        SetBlipColour(Blip, 1)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('10-90 ATM Robbery')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
+        end
+    
     end
 end)
 
@@ -339,4 +376,34 @@ RegisterNetEvent("qb-dispatch:gunshot", function()
         dispatchMessage = "Shots Fired"
     })
     TriggerServerEvent("qb-dispatch:gunshot", currentPos)
+end)
+
+RegisterNetEvent("qb-dispatch:drugsell", function()
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = IsPedMale(playerPed)
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "10-51",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 3,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "Possible Drug Dealing"
+    })
+    TriggerServerEvent("qb-dispatch:drugsell", currentPos)
+end)
+
+RegisterNetEvent("qb-dispatch:atmrobbery", function()
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = IsPedMale(playerPed)
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "10-90",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 2,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "ATM Robbery"
+    })
+    TriggerServerEvent("qb-dispatch:atmrobbery", currentPos)
 end)
