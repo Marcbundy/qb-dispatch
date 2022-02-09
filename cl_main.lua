@@ -388,7 +388,7 @@ RegisterNetEvent("qb-dispatch:drugsell", function()
         gender = gender,
         priority = 3,
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = "Drug Sale In Progress"
+        dispatchMessage = "Possible Drug Dealing"
     })
     TriggerServerEvent("qb-dispatch:drugsell", currentPos)
 end)
