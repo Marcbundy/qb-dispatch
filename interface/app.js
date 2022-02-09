@@ -64,6 +64,9 @@ function timeAgo(dateParam) {
 function addNewCall(callID, timer, info, isPolice) {
     const prio = info['priority']
     let DispatchItem = `<div class="dispatch-item ${callID} dispatch-item-${isPolice} animate__animated"><div class="top-info-holder"><div class="call-id">#${callID}</div><div class="call-code priority-${prio}">${info.dispatchCode}</div><div class="call-name">${info.dispatchMessage}</div></div><div class="bottom-info-holder">`
+    if (info['camCode']) {
+        DispatchItem += `<div class="call-bottom-info"><span class="fas fa-video"></span>${info['camCode']}</div>`
+    }
     if (info['time']) {
         DispatchItem += `<div class="call-bottom-info"><span class="fas fa-clock"></span>${timeAgo(info['time'])}</div>`
     }
