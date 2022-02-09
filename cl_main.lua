@@ -8,6 +8,12 @@ AddEventHandler('onResourceStart', function(resource)
     end
 end)
 
+local function GetPedGender()
+    local gender = "Male"
+    if QBCore.Functions.GetPlayerData().charinfo.gender == 1 then gender = "Female" end
+    return gender
+end
+
 function GetStreetAndZone()
     local playerPed = PlayerPedId()
     local coords = GetEntityCoords(playerPed)
@@ -270,7 +276,7 @@ end)
 RegisterNetEvent("qb-dispatch:officerdown", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
 	PlayerData = QBCore.Functions.GetPlayerData()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-99",
@@ -288,7 +294,7 @@ end)
 RegisterNetEvent("qb-dispatch:bankrobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
@@ -303,7 +309,7 @@ end)
 RegisterNetEvent("qb-dispatch:storerobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
@@ -318,7 +324,7 @@ end)
 RegisterNetEvent("qb-dispatch:houserobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
@@ -333,7 +339,7 @@ end)
 RegisterNetEvent("qb-dispatch:jewelrobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
@@ -348,7 +354,7 @@ end)
 RegisterNetEvent("qb-dispatch:jailbreak", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-98",
         firstStreet = GetStreetAndZone(),
@@ -363,7 +369,7 @@ end)
 RegisterNetEvent("qb-dispatch:carjacking", function(data)
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
@@ -382,7 +388,7 @@ end)
 RegisterNetEvent("qb-dispatch:gunshot", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-60",
         firstStreet = GetStreetAndZone(),
@@ -397,7 +403,7 @@ end)
 RegisterNetEvent("qb-dispatch:drugsell", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-51",
         firstStreet = GetStreetAndZone(),
@@ -412,7 +418,7 @@ end)
 RegisterNetEvent("qb-dispatch:atmrobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
@@ -426,7 +432,7 @@ end)
 RegisterNetEvent("qb-dispatch:civdown", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-60",
         firstStreet = GetStreetAndZone(),
@@ -437,3 +443,4 @@ RegisterNetEvent("qb-dispatch:civdown", function()
     })
     TriggerServerEvent("qb-dispatch:civdown", currentPos)
 end)
+
