@@ -17,6 +17,8 @@
 
 [+] Vangelico Robbery
 
+[+] Casino Heist
+
 [+] Jail Break
 
 [+] Civilan Down
