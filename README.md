@@ -10,6 +10,7 @@
 [+] Bank Robbery
 
 [+] Store Robbery
+![image](https://user-images.githubusercontent.com/82112471/153118089-2623116a-cd80-4eea-85b1-f3e37b748442.png)
 
 [+] House Robbery
 
