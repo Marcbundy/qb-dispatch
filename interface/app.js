@@ -70,6 +70,12 @@ function addNewCall(callID, timer, info, isPolice) {
     if (info['time']) {
         DispatchItem += `<div class="call-bottom-info"><span class="fas fa-clock"></span>${timeAgo(info['time'])}</div>`
     }
+    if (info['fullname']) {
+        DispatchItem += `<div class="call-bottom-info"><span class="fas fa-briefcase"></span>${info['fullname']}</div>`
+    }
+    if (info['callSign']) {
+        DispatchItem += `<div class="call-bottom-info"><span class="fas fa-certificate"></span>${info['callSign']}</div>`
+    }
     if (info['firstStreet']) {
         DispatchItem += `<div class="call-bottom-info"><span class="fas fa-map-pin"></span>${info['firstStreet']}</div>`
     }
