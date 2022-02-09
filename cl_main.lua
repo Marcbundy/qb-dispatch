@@ -1,7 +1,5 @@
 local QBCore = exports["qb-core"]:GetCoreObject()
 
-local ESX = nil
-
 function GetStreetAndZone()
     local playerPed = PlayerPedId()
     local coords = GetEntityCoords(playerPed)
