@@ -31,7 +31,7 @@
 
 [+] Officer Distress
 
-![image](https://user-images.githubusercontent.com/82112471/153124288-4235c82e-981e-4212-a28a-48468da54aaf.png)
+![image](https://user-images.githubusercontent.com/82112471/153128097-4988af31-abc2-429e-aafd-a1cd0773f03a.png)
 
 [+] EMS Distress
 
