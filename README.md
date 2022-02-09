@@ -19,6 +19,10 @@
 
 [+] Jail Break
 
+[+] Civilan Down
+
+[+] ATM Robbery
+
 [+] Vehicle Theft
 
 ![image](https://user-images.githubusercontent.com/82112471/153121729-d41c2faa-498f-4acb-a87c-85b02ca2ed7b.png)
