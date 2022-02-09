@@ -210,7 +210,7 @@ RegisterNetEvent("qb-dispatch:officerdown", function()
     local currentPos = GetEntityCoords(playerPed)
     local gender = IsPedMale(playerPed)
     TriggerServerEvent('dispatch:svNotify', {
-        dispatchCode = "10-13A",
+        dispatchCode = "10-99",
         firstStreet = GetStreetAndZone(),
         gender = gender,
         priority = 1,
