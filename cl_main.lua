@@ -217,8 +217,11 @@ RegisterNetEvent("qb-dispatch:officerdown", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
     local gender = IsPedMale(playerPed)
+	PlayerData = QBCore.Functions.GetPlayerData()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-99",
+        fullname = PlayerData.charinfo.firstname,
+        callSign = QBCore.Functions.GetPlayerData().metadata["callsign"],
         firstStreet = GetStreetAndZone(),
         gender = gender,
         priority = 1,
