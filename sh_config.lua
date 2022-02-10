@@ -1,7 +1,13 @@
 Config = {}
 
-Config["AuthorizedJobs"] = {
-    "police"
+Config["PoliceJobs"] = {
+    "police",
+    "sast",
+    "bcso"
+}
+
+Config["EMSJobs"] = {
+    "ambulance"
 }
 
 Config["AutoAlerts"] = {
