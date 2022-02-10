@@ -451,6 +451,7 @@ RegisterNetEvent("qb-dispatch:officerdown", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "10-99 Officer in Distress"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:officerdown", currentPos)
 end)
 
@@ -466,6 +467,7 @@ RegisterNetEvent("qb-dispatch:bankrobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Bank Robbery"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:bankrobbery", currentPos)
 end)
 
@@ -481,6 +483,7 @@ RegisterNetEvent("qb-dispatch:storerobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Store Robbery"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:storerobbery", currentPos)
 end)
 
@@ -496,6 +499,7 @@ RegisterNetEvent("qb-dispatch:houserobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "House Robbery"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:houserobbery", currentPos)
 end)
 
@@ -511,6 +515,7 @@ RegisterNetEvent("qb-dispatch:jewelrobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Vangelico Robbery"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:jewelrobbery", currentPos)
 end)
 
@@ -526,6 +531,7 @@ RegisterNetEvent("qb-dispatch:jailbreak", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Jail Break"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:jailbreak", currentPos)
 end)
 
@@ -545,6 +551,7 @@ RegisterNetEvent("qb-dispatch:carjacking", function(data)
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Vehicle Theft"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:carjacking", currentPos)
 end)
 
@@ -560,6 +567,7 @@ RegisterNetEvent("qb-dispatch:gunshot", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Shots Fired"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:gunshot", currentPos)
 end)
 
@@ -575,6 +583,7 @@ RegisterNetEvent("qb-dispatch:drugsell", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Possible Drug Dealing"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:drugsell", currentPos)
 end)
 
@@ -590,6 +599,7 @@ RegisterNetEvent("qb-dispatch:atmrobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "ATM Robbery"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:atmrobbery", currentPos)
 end)
 
@@ -605,6 +615,7 @@ RegisterNetEvent("qb-dispatch:civdown", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Injured Person"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:civdown", currentPos)
 end)
 
@@ -620,6 +631,7 @@ RegisterNetEvent("qb-dispatch:artrobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Art Gallery Robbery"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:artrobbery", currentPos)
 end)
 
@@ -635,6 +647,7 @@ RegisterNetEvent("qb-dispatch:humanerobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Humane Labs Robbery"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:humanerobbery", currentPos)
 end)
 
@@ -650,6 +663,7 @@ RegisterNetEvent("qb-dispatch:trainrobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Train Robbery"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:trainrobbery", currentPos)
 end)
 
@@ -665,6 +679,7 @@ RegisterNetEvent("qb-dispatch:vanrobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Security Van Robbery"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:vanrobbery", currentPos)
 end)
 
@@ -680,6 +695,7 @@ RegisterNetEvent("qb-dispatch:undergroundrobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Underground Tunnels Robbery"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:undergroundrobbery", currentPos)
 end)
 
@@ -695,6 +711,7 @@ RegisterNetEvent("qb-dispatch:drugboatrobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Suspicious Activity On Boat"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:drugboatrobbery", currentPos)
 end)
 
@@ -710,6 +727,7 @@ RegisterNetEvent("qb-dispatch:unionrobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Union Depository Robbery"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:unionrobbery", currentPos)
 end)
 
@@ -726,6 +744,7 @@ RegisterNetEvent("qb-dispatch:911call", function(message)
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = message
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:911call", currentPos)
 end)
 
@@ -741,5 +760,6 @@ RegisterNetEvent("qb-dispatch:casinorobbery", function()
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Casino Alarms"
     })
+    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
     TriggerServerEvent("qb-dispatch:casinorobbery", currentPos)
 end)
