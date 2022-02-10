@@ -208,42 +208,6 @@ RegisterNetEvent("qb-dispatch:createBlip", function(type, coords)
                 return
             end
         end
-    elseif type == "officerdown" then
-        local alpha = 250
-        local Blip = AddBlipForCoord(coords)
-        SetBlipSprite(Blip, 162)
-        SetBlipColour(Blip, 1)
-        SetBlipAsShortRange(Blip, true)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString('10-99 Officer in Distress')
-        EndTextCommandSetBlipName(Blip)
-        while alpha ~= 0 do
-            Citizen.Wait(120 * 4)
-            alpha = alpha - 1
-            SetBlipAlpha(Blip, alpha)
-            if alpha == 0 then
-                RemoveBlip(Blip)
-                return
-            end
-        end	
-    elseif type == "casinorobbery" then
-        local alpha = 250
-        local Blip = AddBlipForCoord(coords)
-        SetBlipSprite(Blip, 679)
-        SetBlipColour(Blip, 1)
-        SetBlipAsShortRange(Blip, true)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString('10-90 Casino Alarms')
-        EndTextCommandSetBlipName(Blip)
-        while alpha ~= 0 do
-            Citizen.Wait(120 * 4)
-            alpha = alpha - 1
-            SetBlipAlpha(Blip, alpha)
-            if alpha == 0 then
-                RemoveBlip(Blip)
-                return
-            end
-        end	
     elseif type == "drugsell" then
         local alpha = 250
         local Blip = AddBlipForCoord(coords)
@@ -297,15 +261,122 @@ RegisterNetEvent("qb-dispatch:createBlip", function(type, coords)
                 return
             end
         end
-    elseif type == "911call" then
+    elseif type == "artrobbery" then
         local alpha = 250
-        local Blip = AddBlipForCoord(coords)
-        SetBlipSprite(Blip, 480)
-        SetBlipColour(Blip, 1)
-        SetBlipScale(Blip, 1.2)
+        local Blip = AddBlipForRadius(coords, 75.0)
+        SetBlipSprite(Blip, 269)
+        SetBlipColour(Blip, 59)
         SetBlipAsShortRange(Blip, true)
         BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString('911 Call')
+        AddTextComponentString('10-90 Art Gallery Robbery In Progress')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
+        end
+    elseif type == "humanerobbery" then
+        local alpha = 250
+        local Blip = AddBlipForRadius(coords, 75.0)
+        SetBlipSprite(Blip, 499)
+        SetBlipColour(Blip, 2)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('10-90 Humane Labs Robbery In Progress')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
+        end
+    elseif type == "trainrobbery" then
+        local alpha = 250
+        local Blip = AddBlipForRadius(coords, 75.0)
+        SetBlipSprite(Blip, 795)
+        SetBlipColour(Blip, 59)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('10-90 Train Robbery In Progress')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
+        end
+    elseif type == "vanrobbery" then
+        local alpha = 250
+        local Blip = AddBlipForRadius(coords, 75.0)
+        SetBlipSprite(Blip, 67)
+        SetBlipColour(Blip, 59)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('10-90 Security Van Robbery In Progress')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
+        end
+    elseif type == "undergroundrobbery" then
+        local alpha = 250
+        local Blip = AddBlipForRadius(coords, 75.0)
+        SetBlipSprite(Blip, 486)
+        SetBlipColour(Blip, 59)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('10-90 Underground Tunnels Robbery In Progress')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
+        end
+    elseif type == "drugboatrobbery" then
+        local alpha = 250
+        local Blip = AddBlipForRadius(coords, 75.0)
+        SetBlipSprite(Blip, 427)
+        SetBlipColour(Blip, 26)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('10-31 Suspicious Activity On Boat')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
+        end
+    elseif type == "unionrobbery" then
+        local alpha = 250
+        local Blip = AddBlipForRadius(coords, 75.0)
+        SetBlipSprite(Blip, 500)
+        SetBlipColour(Blip, 60)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('10-90 Union Depository Robbery In Progress')
         EndTextCommandSetBlipName(Blip)
         while alpha ~= 0 do
             Citizen.Wait(120 * 4)
@@ -455,21 +526,6 @@ RegisterNetEvent("qb-dispatch:gunshot", function()
     TriggerServerEvent("qb-dispatch:gunshot", currentPos)
 end)
 
-RegisterNetEvent("qb-dispatch:casinorobbery", function()
-    local playerPed = PlayerPedId()
-    local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
-    TriggerServerEvent('dispatch:svNotify', {
-        dispatchCode = "10-90",
-        firstStreet = GetStreetAndZone(),
-        gender = gender,
-        priority = 1,
-        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = "Casino Alarms"
-    })
-    TriggerServerEvent("qb-dispatch:casinorobbery", currentPos)
-end)
-
 RegisterNetEvent("qb-dispatch:drugsell", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
@@ -499,6 +555,7 @@ RegisterNetEvent("qb-dispatch:atmrobbery", function()
     })
     TriggerServerEvent("qb-dispatch:atmrobbery", currentPos)
 end)
+
 RegisterNetEvent("qb-dispatch:civdown", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
@@ -514,17 +571,107 @@ RegisterNetEvent("qb-dispatch:civdown", function()
     TriggerServerEvent("qb-dispatch:civdown", currentPos)
 end)
 
-RegisterNetEvent("qb-dispatch:911call", function(message)
+RegisterNetEvent("qb-dispatch:artrobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
     local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
-        dispatchCode = "911",
+        dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
         gender = gender,
-        priority = 2,
+        priority = 1,
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = message
+        dispatchMessage = "Art Gallery Robbery"
     })
-    TriggerServerEvent("qb-dispatch:911call", currentPos)
+    TriggerServerEvent("qb-dispatch:artrobbery", currentPos)
+end)
+
+RegisterNetEvent("qb-dispatch:humanerobbery", function()
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = GetPedGender()
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "10-90",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 1,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "Humane Labs Robbery"
+    })
+    TriggerServerEvent("qb-dispatch:humanerobbery", currentPos)
+end)
+
+RegisterNetEvent("qb-dispatch:trainrobbery", function()
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = GetPedGender()
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "10-90",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 1,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "Train Robbery"
+    })
+    TriggerServerEvent("qb-dispatch:trainrobbery", currentPos)
+end)
+
+RegisterNetEvent("qb-dispatch:vanrobbery", function()
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = GetPedGender()
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "10-90",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 1,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "Security Van Robbery"
+    })
+    TriggerServerEvent("qb-dispatch:vanrobbery", currentPos)
+end)
+
+RegisterNetEvent("qb-dispatch:undergroundrobbery", function()
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = GetPedGender()
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "10-90",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 1,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "Underground Tunnels Robbery"
+    })
+    TriggerServerEvent("qb-dispatch:undergroundrobbery", currentPos)
+end)
+
+RegisterNetEvent("qb-dispatch:drugboatrobbery", function()
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = GetPedGender()
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "10-31",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 1,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "Suspicious Activity On Boat"
+    })
+    TriggerServerEvent("qb-dispatch:drugboatrobbery", currentPos)
+end)
+
+RegisterNetEvent("qb-dispatch:unionrobbery", function()
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = GetPedGender()
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "10-90",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 1,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "Union Depository Robbery"
+    })
+    TriggerServerEvent("qb-dispatch:unionrobbery", currentPos)
 end)
