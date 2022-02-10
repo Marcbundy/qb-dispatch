@@ -14,6 +14,18 @@ local function GetPedGender()
     return gender
 end
 
+local function GetDirectionText(heading)
+    if ((heading >= 0 and heading < 45) or (heading >= 315 and heading < 360)) then
+        return 'North Bound'
+    elseif (heading >= 45 and heading < 135) then
+        return 'South Bound'
+    elseif (heading >= 135 and heading < 225) then
+        return 'East Bound'
+    elseif (heading >= 225 and heading < 315) then
+        return 'West Bound'
+    end
+end
+
 function GetStreetAndZone()
     local playerPed = PlayerPedId()
     local coords = GetEntityCoords(playerPed)
@@ -546,7 +558,7 @@ RegisterNetEvent("qb-dispatch:carjacking", function(data)
         model = data.model,
         plate = data.plate,
         firstColor = data.firstColor,
-        heading = data.heading,
+        heading = GetDirectionText(data.heading),
         priority = 3,
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Vehicle Theft"
