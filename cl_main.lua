@@ -280,13 +280,32 @@ RegisterNetEvent("qb-dispatch:createBlip", function(type, coords)
                 return
             end
         end
- 	    elseif type == "civdown" then
+ 	elseif type == "civdown" then
         local alpha = 250
         local Blip = AddBlipForRadius(coords, 75.0)
         SetBlipColour(Blip, 1)
         SetBlipAsShortRange(Blip, true)
         BeginTextCommandSetBlipName("STRING")
         AddTextComponentString('Injured Person')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
+        end
+    elseif type == "911call" then
+        local alpha = 250
+        local Blip = AddBlipForCoord(coords)
+        SetBlipSprite(Blip, 480)
+        SetBlipColour(Blip, 1)
+        SetBlipScale(Blip, 1.2)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('911 Call')
         EndTextCommandSetBlipName(Blip)
         while alpha ~= 0 do
             Citizen.Wait(120 * 4)
@@ -495,3 +514,17 @@ RegisterNetEvent("qb-dispatch:civdown", function()
     TriggerServerEvent("qb-dispatch:civdown", currentPos)
 end)
 
+RegisterNetEvent("qb-dispatch:911call", function(message)
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = GetPedGender()
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "911",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 2,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = message
+    })
+    TriggerServerEvent("qb-dispatch:911call", currentPos)
+end)
