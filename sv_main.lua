@@ -11,6 +11,11 @@ function isAuth(job)
     return false
 end
 
+-- Uncomment to enable testing events to the MDT. Replace the trigger event for the one you want.
+--[[ QBCore.Commands.Add('testevent', 'Test MDT events.', {}, false, function(source)
+	TriggerClientEvent('qb-dispatch:jailbreak', source)
+end) ]]
+
 RegisterServerEvent("dispatch:svNotify", function(data)
     calls = calls + 1
     for idx, id in pairs(QBCore.Functions.GetPlayers()) do
@@ -189,3 +194,4 @@ RegisterServerEvent("qb-dispatch:911call", function(coords)
             TriggerClientEvent("qb-dispatch:createBlip", xPlayer.PlayerData.source, "911call", coords)
         end
     end
+end)
