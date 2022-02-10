@@ -208,6 +208,42 @@ RegisterNetEvent("qb-dispatch:createBlip", function(type, coords)
                 return
             end
         end
+    elseif type == "officerdown" then
+        local alpha = 250
+        local Blip = AddBlipForCoord(coords)
+        SetBlipSprite(Blip, 162)
+        SetBlipColour(Blip, 1)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('10-99 Officer in Distress')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
+        end	
+    elseif type == "casinorobbery" then
+        local alpha = 250
+        local Blip = AddBlipForCoord(coords)
+        SetBlipSprite(Blip, 679)
+        SetBlipColour(Blip, 1)
+        SetBlipAsShortRange(Blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString('10-90 Casino Alarms')
+        EndTextCommandSetBlipName(Blip)
+        while alpha ~= 0 do
+            Citizen.Wait(120 * 4)
+            alpha = alpha - 1
+            SetBlipAlpha(Blip, alpha)
+            if alpha == 0 then
+                RemoveBlip(Blip)
+                return
+            end
+        end	
     elseif type == "drugsell" then
         local alpha = 250
         local Blip = AddBlipForCoord(coords)
@@ -398,6 +434,21 @@ RegisterNetEvent("qb-dispatch:gunshot", function()
         dispatchMessage = "Shots Fired"
     })
     TriggerServerEvent("qb-dispatch:gunshot", currentPos)
+end)
+
+RegisterNetEvent("qb-dispatch:casinorobbery", function()
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = IsPedMale(playerPed)
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "10-90",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 1,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "Casino Alarms"
+    })
+    TriggerServerEvent("qb-dispatch:casinorobbery", currentPos)
 end)
 
 RegisterNetEvent("qb-dispatch:drugsell", function()
