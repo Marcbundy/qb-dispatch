@@ -244,7 +244,7 @@ RegisterNetEvent("qb-dispatch:createBlip", function(type, coords)
                 return
             end
         end
- 	elseif type == "civdown" then
+    elseif type == "civdown" then
         local alpha = 250
         local Blip = AddBlipForRadius(coords, 75.0)
         SetBlipColour(Blip, 1)
