@@ -8,6 +8,12 @@ AddEventHandler('onResourceStart', function(resource)
     end
 end)
 
+local function GetPedGender()
+    local gender = "Male"
+    if QBCore.Functions.GetPlayerData().charinfo.gender == 1 then gender = "Female" end
+    return gender
+end
+
 function GetStreetAndZone()
     local playerPed = PlayerPedId()
     local coords = GetEntityCoords(playerPed)
@@ -238,139 +244,13 @@ RegisterNetEvent("qb-dispatch:createBlip", function(type, coords)
                 return
             end
         end
- 	elseif type == "civdown" then
+ 	    elseif type == "civdown" then
         local alpha = 250
         local Blip = AddBlipForRadius(coords, 75.0)
         SetBlipColour(Blip, 1)
         SetBlipAsShortRange(Blip, true)
         BeginTextCommandSetBlipName("STRING")
         AddTextComponentString('Injured Person')
-        EndTextCommandSetBlipName(Blip)
-        while alpha ~= 0 do
-            Citizen.Wait(120 * 4)
-            alpha = alpha - 1
-            SetBlipAlpha(Blip, alpha)
-            if alpha == 0 then
-                RemoveBlip(Blip)
-                return
-            end
-        end
-    elseif type == "artrobbery" then
-        local alpha = 250
-        local Blip = AddBlipForRadius(coords, 75.0)
-        SetBlipSprite(Blip, 269)
-        SetBlipColour(Blip, 59)
-        SetBlipAsShortRange(Blip, true)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString('10-90 Art Gallery Robbery In Progress')
-        EndTextCommandSetBlipName(Blip)
-        while alpha ~= 0 do
-            Citizen.Wait(120 * 4)
-            alpha = alpha - 1
-            SetBlipAlpha(Blip, alpha)
-            if alpha == 0 then
-                RemoveBlip(Blip)
-                return
-            end
-        end
-    elseif type == "humanerobbery" then
-        local alpha = 250
-        local Blip = AddBlipForRadius(coords, 75.0)
-        SetBlipSprite(Blip, 499)
-        SetBlipColour(Blip, 2)
-        SetBlipAsShortRange(Blip, true)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString('10-90 Humane Labs Robbery In Progress')
-        EndTextCommandSetBlipName(Blip)
-        while alpha ~= 0 do
-            Citizen.Wait(120 * 4)
-            alpha = alpha - 1
-            SetBlipAlpha(Blip, alpha)
-            if alpha == 0 then
-                RemoveBlip(Blip)
-                return
-            end
-        end
-    elseif type == "trainrobbery" then
-        local alpha = 250
-        local Blip = AddBlipForRadius(coords, 75.0)
-        SetBlipSprite(Blip, 795)
-        SetBlipColour(Blip, 59)
-        SetBlipAsShortRange(Blip, true)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString('10-90 Train Robbery In Progress')
-        EndTextCommandSetBlipName(Blip)
-        while alpha ~= 0 do
-            Citizen.Wait(120 * 4)
-            alpha = alpha - 1
-            SetBlipAlpha(Blip, alpha)
-            if alpha == 0 then
-                RemoveBlip(Blip)
-                return
-            end
-        end
-    elseif type == "vanrobbery" then
-        local alpha = 250
-        local Blip = AddBlipForRadius(coords, 75.0)
-        SetBlipSprite(Blip, 67)
-        SetBlipColour(Blip, 59)
-        SetBlipAsShortRange(Blip, true)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString('10-90 Security Van Robbery In Progress')
-        EndTextCommandSetBlipName(Blip)
-        while alpha ~= 0 do
-            Citizen.Wait(120 * 4)
-            alpha = alpha - 1
-            SetBlipAlpha(Blip, alpha)
-            if alpha == 0 then
-                RemoveBlip(Blip)
-                return
-            end
-        end
-    elseif type == "undergroundrobbery" then
-        local alpha = 250
-        local Blip = AddBlipForRadius(coords, 75.0)
-        SetBlipSprite(Blip, 486)
-        SetBlipColour(Blip, 59)
-        SetBlipAsShortRange(Blip, true)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString('10-90 Underground Tunnels Robbery In Progress')
-        EndTextCommandSetBlipName(Blip)
-        while alpha ~= 0 do
-            Citizen.Wait(120 * 4)
-            alpha = alpha - 1
-            SetBlipAlpha(Blip, alpha)
-            if alpha == 0 then
-                RemoveBlip(Blip)
-                return
-            end
-        end
-    elseif type == "drugboatrobbery" then
-        local alpha = 250
-        local Blip = AddBlipForRadius(coords, 75.0)
-        SetBlipSprite(Blip, 427)
-        SetBlipColour(Blip, 26)
-        SetBlipAsShortRange(Blip, true)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString('10-31 Suspicious Activity On Boat')
-        EndTextCommandSetBlipName(Blip)
-        while alpha ~= 0 do
-            Citizen.Wait(120 * 4)
-            alpha = alpha - 1
-            SetBlipAlpha(Blip, alpha)
-            if alpha == 0 then
-                RemoveBlip(Blip)
-                return
-            end
-        end
-    elseif type == "unionrobbery" then
-        local alpha = 250
-        local Blip = AddBlipForRadius(coords, 75.0)
-        SetBlipSprite(Blip, 500)
-        SetBlipColour(Blip, 60)
-        SetBlipAsShortRange(Blip, true)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString('10-90 Union Depository Robbery In Progress')
         EndTextCommandSetBlipName(Blip)
         while alpha ~= 0 do
             Citizen.Wait(120 * 4)
@@ -396,7 +276,7 @@ end)
 RegisterNetEvent("qb-dispatch:officerdown", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
 	PlayerData = QBCore.Functions.GetPlayerData()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-99",
@@ -414,7 +294,7 @@ end)
 RegisterNetEvent("qb-dispatch:bankrobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
@@ -426,10 +306,25 @@ RegisterNetEvent("qb-dispatch:bankrobbery", function()
     TriggerServerEvent("qb-dispatch:bankrobbery", currentPos)
 end)
 
+RegisterNetEvent("qb-dispatch:storerobbery", function()
+    local playerPed = PlayerPedId()
+    local currentPos = GetEntityCoords(playerPed)
+    local gender = GetPedGender()
+    TriggerServerEvent('dispatch:svNotify', {
+        dispatchCode = "10-90",
+        firstStreet = GetStreetAndZone(),
+        gender = gender,
+        priority = 2,
+        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
+        dispatchMessage = "Store Robbery"
+    })
+    TriggerServerEvent("qb-dispatch:storerobbery", currentPos)
+end)
+
 RegisterNetEvent("qb-dispatch:houserobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
@@ -444,7 +339,7 @@ end)
 RegisterNetEvent("qb-dispatch:jewelrobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
@@ -459,7 +354,7 @@ end)
 RegisterNetEvent("qb-dispatch:jailbreak", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-98",
         firstStreet = GetStreetAndZone(),
@@ -474,7 +369,7 @@ end)
 RegisterNetEvent("qb-dispatch:carjacking", function(data)
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
@@ -493,7 +388,7 @@ end)
 RegisterNetEvent("qb-dispatch:gunshot", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-60",
         firstStreet = GetStreetAndZone(),
@@ -508,7 +403,7 @@ end)
 RegisterNetEvent("qb-dispatch:drugsell", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-51",
         firstStreet = GetStreetAndZone(),
@@ -523,7 +418,7 @@ end)
 RegisterNetEvent("qb-dispatch:atmrobbery", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
@@ -534,11 +429,10 @@ RegisterNetEvent("qb-dispatch:atmrobbery", function()
     })
     TriggerServerEvent("qb-dispatch:atmrobbery", currentPos)
 end)
-
 RegisterNetEvent("qb-dispatch:civdown", function()
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
+    local gender = GetPedGender()
     TriggerServerEvent('dispatch:svNotify', {
         dispatchCode = "10-60",
         firstStreet = GetStreetAndZone(),
@@ -548,110 +442,5 @@ RegisterNetEvent("qb-dispatch:civdown", function()
         dispatchMessage = "Injured Person"
     })
     TriggerServerEvent("qb-dispatch:civdown", currentPos)
-end)
-
-RegisterNetEvent("qb-dispatch:artrobbery", function()
-    local playerPed = PlayerPedId()
-    local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
-    TriggerServerEvent('dispatch:svNotify', {
-        dispatchCode = "10-90",
-        firstStreet = GetStreetAndZone(),
-        gender = gender,
-        priority = 1,
-        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = "Art Gallery Robbery"
-    })
-    TriggerServerEvent("qb-dispatch:artrobbery", currentPos)
-end)
-
-RegisterNetEvent("qb-dispatch:humanerobbery", function()
-    local playerPed = PlayerPedId()
-    local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
-    TriggerServerEvent('dispatch:svNotify', {
-        dispatchCode = "10-90",
-        firstStreet = GetStreetAndZone(),
-        gender = gender,
-        priority = 1,
-        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = "Humane Labs Robbery"
-    })
-    TriggerServerEvent("qb-dispatch:humanerobbery", currentPos)
-end)
-
-RegisterNetEvent("qb-dispatch:trainrobbery", function()
-    local playerPed = PlayerPedId()
-    local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
-    TriggerServerEvent('dispatch:svNotify', {
-        dispatchCode = "10-90",
-        firstStreet = GetStreetAndZone(),
-        gender = gender,
-        priority = 1,
-        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = "Train Robbery"
-    })
-    TriggerServerEvent("qb-dispatch:trainrobbery", currentPos)
-end)
-
-RegisterNetEvent("qb-dispatch:vanrobbery", function()
-    local playerPed = PlayerPedId()
-    local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
-    TriggerServerEvent('dispatch:svNotify', {
-        dispatchCode = "10-90",
-        firstStreet = GetStreetAndZone(),
-        gender = gender,
-        priority = 1,
-        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = "Security Van Robbery"
-    })
-    TriggerServerEvent("qb-dispatch:vanrobbery", currentPos)
-end)
-
-RegisterNetEvent("qb-dispatch:undergroundrobbery", function()
-    local playerPed = PlayerPedId()
-    local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
-    TriggerServerEvent('dispatch:svNotify', {
-        dispatchCode = "10-90",
-        firstStreet = GetStreetAndZone(),
-        gender = gender,
-        priority = 1,
-        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = "Underground Tunnels Robbery"
-    })
-    TriggerServerEvent("qb-dispatch:undergroundrobbery", currentPos)
-end)
-
-RegisterNetEvent("qb-dispatch:drugboatrobbery", function()
-    local playerPed = PlayerPedId()
-    local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
-    TriggerServerEvent('dispatch:svNotify', {
-        dispatchCode = "10-31",
-        firstStreet = GetStreetAndZone(),
-        gender = gender,
-        priority = 1,
-        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = "Suspicious Activity On Boat"
-    })
-    TriggerServerEvent("qb-dispatch:drugboatrobbery", currentPos)
-end)
-
-RegisterNetEvent("qb-dispatch:unionrobbery", function()
-    local playerPed = PlayerPedId()
-    local currentPos = GetEntityCoords(playerPed)
-    local gender = IsPedMale(playerPed)
-    TriggerServerEvent('dispatch:svNotify', {
-        dispatchCode = "10-90",
-        firstStreet = GetStreetAndZone(),
-        gender = gender,
-        priority = 1,
-        origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
-        dispatchMessage = "Union Depository Robbery"
-    })
-    TriggerServerEvent("qb-dispatch:unionrobbery", currentPos)
 end)
 

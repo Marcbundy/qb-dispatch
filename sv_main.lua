@@ -20,7 +20,6 @@ RegisterServerEvent("dispatch:svNotify", function(data)
         end
     end 
 end)
-
 RegisterServerEvent("qb-dispatch:bankrobbery", function(coords)
     for idx, id in pairs(QBCore.Functions.GetPlayers()) do
         local xPlayer = QBCore.Functions.GetPlayer(id)
@@ -29,7 +28,6 @@ RegisterServerEvent("qb-dispatch:bankrobbery", function(coords)
         end
     end
 end)
-
 RegisterServerEvent("qb-dispatch:storerobbery", function(coords)
     for idx, id in pairs(QBCore.Functions.GetPlayers()) do
         local xPlayer = QBCore.Functions.GetPlayer(id)
@@ -38,7 +36,6 @@ RegisterServerEvent("qb-dispatch:storerobbery", function(coords)
         end
     end
 end)
-
 RegisterServerEvent("qb-dispatch:houserobbery", function(coords)
     for idx, id in pairs(QBCore.Functions.GetPlayers()) do
         local xPlayer = QBCore.Functions.GetPlayer(id)
@@ -47,7 +44,6 @@ RegisterServerEvent("qb-dispatch:houserobbery", function(coords)
         end
     end
 end)
-
 RegisterServerEvent("qb-dispatch:jewelrobbery", function(coords)
     for idx, id in pairs(QBCore.Functions.GetPlayers()) do
         local xPlayer = QBCore.Functions.GetPlayer(id)
@@ -56,7 +52,6 @@ RegisterServerEvent("qb-dispatch:jewelrobbery", function(coords)
         end
     end
 end)
-
 RegisterServerEvent("qb-dispatch:jailbreak", function(coords)
     for idx, id in pairs(QBCore.Functions.GetPlayers()) do
         local xPlayer = QBCore.Functions.GetPlayer(id)
@@ -73,7 +68,6 @@ RegisterServerEvent("qb-dispatch:carjacking", function(coords)
         end
     end
 end)
-
 RegisterServerEvent("qb-dispatch:gunshot", function(coords)
     for idx, id in pairs(QBCore.Functions.GetPlayers()) do
         local xPlayer = QBCore.Functions.GetPlayer(id)
@@ -82,7 +76,6 @@ RegisterServerEvent("qb-dispatch:gunshot", function(coords)
         end
     end
 end)
-
 RegisterServerEvent("qb-dispatch:officerdown", function(coords)
 for idx, id in pairs(QBCore.Functions.GetPlayers()) do
         local xPlayer = QBCore.Functions.GetPlayer(id)
@@ -91,7 +84,6 @@ for idx, id in pairs(QBCore.Functions.GetPlayers()) do
         end
     end
 end)
-
 RegisterServerEvent("qb-dispatch:drugsell", function(coords)
     for idx, id in pairs(QBCore.Functions.GetPlayers()) do
         local xPlayer = QBCore.Functions.GetPlayer(id)
@@ -100,7 +92,6 @@ RegisterServerEvent("qb-dispatch:drugsell", function(coords)
         end
     end
 end)
-
 RegisterServerEvent("qb-dispatch:atmrobbery", function(coords)
     for idx, id in pairs(QBCore.Functions.GetPlayers()) do
         local xPlayer = QBCore.Functions.GetPlayer(id)
@@ -109,75 +100,11 @@ RegisterServerEvent("qb-dispatch:atmrobbery", function(coords)
         end
     end
 end)
-
-RegisterServerEvent("qb-dispatch:civdown", function(coords)
+    RegisterServerEvent("qb-dispatch:civdown", function(coords)
     for idx, id in pairs(QBCore.Functions.GetPlayers()) do
         local xPlayer = QBCore.Functions.GetPlayer(id)
         if isAuth(xPlayer.PlayerData.job.name) then
             TriggerClientEvent("qb-dispatch:createBlip", xPlayer.PlayerData.source, "civdown", coords)
-        end
-    end
-end)
-
-RegisterServerEvent("qb-dispatch:artrobbery", function(coords)
-    for idx, id in pairs(QBCore.Functions.GetPlayers()) do
-        local xPlayer = QBCore.Functions.GetPlayer(id)
-        if isAuth(xPlayer.PlayerData.job.name) then
-            TriggerClientEvent("qb-dispatch:createBlip", xPlayer.PlayerData.source, "artrobbery", coords)
-        end
-    end
-end)
-
-RegisterServerEvent("qb-dispatch:humanerobbery", function(coords)
-    for idx, id in pairs(QBCore.Functions.GetPlayers()) do
-        local xPlayer = QBCore.Functions.GetPlayer(id)
-        if isAuth(xPlayer.PlayerData.job.name) then
-            TriggerClientEvent("qb-dispatch:createBlip", xPlayer.PlayerData.source, "humanerobbery", coords)
-        end
-    end
-end)
-
-RegisterServerEvent("qb-dispatch:trainrobbery", function(coords)
-    for idx, id in pairs(QBCore.Functions.GetPlayers()) do
-        local xPlayer = QBCore.Functions.GetPlayer(id)
-        if isAuth(xPlayer.PlayerData.job.name) then
-            TriggerClientEvent("qb-dispatch:createBlip", xPlayer.PlayerData.source, "trainrobbery", coords)
-        end
-    end
-end)
-
-RegisterServerEvent("qb-dispatch:vanrobbery", function(coords)
-    for idx, id in pairs(QBCore.Functions.GetPlayers()) do
-        local xPlayer = QBCore.Functions.GetPlayer(id)
-        if isAuth(xPlayer.PlayerData.job.name) then
-            TriggerClientEvent("qb-dispatch:createBlip", xPlayer.PlayerData.source, "vanrobbery", coords)
-        end
-    end
-end)
-
-RegisterServerEvent("qb-dispatch:undergroundrobbery", function(coords)
-    for idx, id in pairs(QBCore.Functions.GetPlayers()) do
-        local xPlayer = QBCore.Functions.GetPlayer(id)
-        if isAuth(xPlayer.PlayerData.job.name) then
-            TriggerClientEvent("qb-dispatch:createBlip", xPlayer.PlayerData.source, "undergroundrobbery", coords)
-        end
-    end
-end)
-
-RegisterServerEvent("qb-dispatch:drugboatrobbery", function(coords)
-    for idx, id in pairs(QBCore.Functions.GetPlayers()) do
-        local xPlayer = QBCore.Functions.GetPlayer(id)
-        if isAuth(xPlayer.PlayerData.job.name) then
-            TriggerClientEvent("qb-dispatch:createBlip", xPlayer.PlayerData.source, "drugboatrobbery", coords)
-        end
-    end
-end)
-
-RegisterServerEvent("qb-dispatch:unionrobbery", function(coords)
-    for idx, id in pairs(QBCore.Functions.GetPlayers()) do
-        local xPlayer = QBCore.Functions.GetPlayer(id)
-        if isAuth(xPlayer.PlayerData.job.name) then
-            TriggerClientEvent("qb-dispatch:createBlip", xPlayer.PlayerData.source, "unionrobbery", coords)
         end
     end
 end)
