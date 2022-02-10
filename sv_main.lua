@@ -96,7 +96,7 @@ RegisterServerEvent("qb-dispatch:officerdown", function(coords)
 for idx, id in pairs(QBCore.Functions.GetPlayers()) do
         local xPlayer = QBCore.Functions.GetPlayer(id)
         if IsPolice(xPlayer.PlayerData.job.name) and IsEMS(xPlayer.PlayerData.job.name) then
-            TriggerClientEvent("qb-dispatch:createBlip", xPlayer.PlayerData.source, "10-99 Officer Down", coords)
+            TriggerClientEvent("qb-dispatch:createBlip", xPlayer.PlayerData.source, "officerdown", coords)
 
         end
     end
