@@ -82,6 +82,9 @@ function addNewCall(callID, timer, info, isPolice) {
     if (info['heading']) {
         DispatchItem += `<div class="call-bottom-info"><span class="fas fa-share"></span>${info['heading']}</div>`
     }
+    if (info["camId"]) {
+        DispatchItem += `<div class="call-bottom-info"><span class="fas fa-camera"></span>${info['camId']}</div>`
+    }
     if (info['gender']) {
         DispatchItem += `<div class="call-bottom-info"><span class="fas fa-genderless"></span>${info['gender']}</div>`
     }

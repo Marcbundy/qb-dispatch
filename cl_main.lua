@@ -467,7 +467,7 @@ RegisterNetEvent("qb-dispatch:officerdown", function()
     TriggerServerEvent("qb-dispatch:officerdown", currentPos)
 end)
 
-RegisterNetEvent("qb-dispatch:bankrobbery", function()
+RegisterNetEvent("qb-dispatch:bankrobbery", function(camId)
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
     local gender = GetPedGender()
@@ -475,6 +475,7 @@ RegisterNetEvent("qb-dispatch:bankrobbery", function()
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
         gender = gender,
+        camId = camId,
         priority = 1,
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Bank Robbery"
@@ -483,7 +484,7 @@ RegisterNetEvent("qb-dispatch:bankrobbery", function()
     TriggerServerEvent("qb-dispatch:bankrobbery", currentPos)
 end)
 
-RegisterNetEvent("qb-dispatch:storerobbery", function()
+RegisterNetEvent("qb-dispatch:storerobbery", function(camId)
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
     local gender = GetPedGender()
@@ -491,6 +492,7 @@ RegisterNetEvent("qb-dispatch:storerobbery", function()
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
         gender = gender,
+        camId = camId,
         priority = 2,
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Store Robbery"
@@ -515,7 +517,7 @@ RegisterNetEvent("qb-dispatch:houserobbery", function()
     TriggerServerEvent("qb-dispatch:houserobbery", currentPos)
 end)
 
-RegisterNetEvent("qb-dispatch:jewelrobbery", function()
+RegisterNetEvent("qb-dispatch:jewelrobbery", function(camId)
     local playerPed = PlayerPedId()
     local currentPos = GetEntityCoords(playerPed)
     local gender = GetPedGender()
@@ -523,6 +525,7 @@ RegisterNetEvent("qb-dispatch:jewelrobbery", function()
         dispatchCode = "10-90",
         firstStreet = GetStreetAndZone(),
         gender = gender,
+        camId = camId,
         priority = 2,
         origin = {x = currentPos.x, y = currentPos.y, z = currentPos.z},
         dispatchMessage = "Vangelico Robbery"
